@@ -5,16 +5,19 @@ from datetime import datetime
 
 
 class SmartContract:
-    def __init__(self, id):
-        self.id = 0
+    idCounter = 1
+
+    def __init__(self):
+        self.id = SmartContract.idCounter
+        SmartContract.idCounter += 1
         self.client_balance = 0
         self.owner_balance = 0
         self.booking_details = BookingDetails
 
-    def retrieve_balance(self, private_key):
+    def retrieve_balance(self):
         return self.client_balance 
 
-    def withdraw_earnings(self, private_key):
+    def withdraw_earnings(self):
         return self.owner_balance
 
     def client_deposit(self, ether):
