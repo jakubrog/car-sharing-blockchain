@@ -1,9 +1,5 @@
 from datetime import datetime
 
-# TODO: checking everything, like withdraw before end of rental
-# TODO: add contract signing
-
-
 class SmartContract:
     idCounter = 1
 
@@ -37,6 +33,8 @@ class SmartContract:
 
     def end_car_rental(self):
         self.booking_details.get_car().end_rental()
+        self.client_balance -= self.booking_details.get_summed_cost()
+        self.owner_balance += self.booking_details.get_summed_cost()
     
     def get_car(self):
         return self.booking_details.get_car()

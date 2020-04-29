@@ -1,8 +1,5 @@
 from contract import SmartContract, BookingDetails
 
-# TODO: remove id from Owner deploy, owner shouldn't be responsible for contract id
-# TODO: add checking everything like in contract.py
-
 class Owner:
     def __init__(self, balance):
         self.contract = SmartContract
@@ -35,6 +32,7 @@ class Customer:
     def request_book(self, ether, blockchain):
         self.contract = blockchain.get_unconfirmed_transactions()[0]
         self.contract.client_deposit(ether)
+        self.balance -= ether
 
     def pass_number_of_days(self, days_no):
         self.contract.get_booking_details().request(days_no)

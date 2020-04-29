@@ -1,6 +1,7 @@
-from hashlib import sha256
 import json
 import time
+import random
+import string
 
 
 class Block:
@@ -15,8 +16,13 @@ class Block:
         """
         A function that return the hash of the block contents.
         """
-        block_string = json.dumps(self.__dict__, sort_keys=True)
-        return sha256(block_string.encode()).hexdigest()
+        return self.random_string()
+
+
+    def random_string(self, starts_with='00', stringLength=8):
+        letters = string.ascii_lowercase
+        return starts_with  + ''.join(random.choice(letters) for i in range(stringLength))
+
 
 
 class Blockchain:

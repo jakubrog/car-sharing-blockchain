@@ -25,7 +25,7 @@ def start():
 
     #3
     car = "Ferrari"
-    daily_price = 50
+    daily_price = 10
     days_no = 3
     owner.add_car_to_rent(daily_price, car)
     customer.pass_number_of_days(days_no)
@@ -46,6 +46,7 @@ def start():
 
     show_rental_cost(daily_price*days_no)
     show_balance(customer.balance, owner.balance)
+
 
 if __name__ == '__main__':
     start()
